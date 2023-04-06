@@ -23,11 +23,11 @@ public class Block : MonoBehaviour
         {
             if(color == BlockColor.Red)
             {
-                //add to score
+                GameManager.instance.AddScore();
             }
             else
             {
-                //subtract life
+                GameManager.instance.HitWrongBlock();
             }
 
             Hit();
@@ -36,11 +36,11 @@ public class Block : MonoBehaviour
         {
             if (color == BlockColor.Green)
             {
-                //add to score
+                GameManager.instance.AddScore();
             }
             else
             {
-                //subtract life
+                GameManager.instance.HitWrongBlock();
             }
             Hit();
         }
@@ -67,12 +67,12 @@ public class Block : MonoBehaviour
         leftRig.AddTorque(-transform.forward * brokenBlockTorque, ForceMode.Impulse);
         rightRig.AddTorque(transform.forward * brokenBlockTorque, ForceMode.Impulse);
 
+        //Destroy mmain block
+        Destroy(gameObject);
+
         //Destroy pieces after few secs
         Destroy(brokenBlockLeft, brokenBlockDestroyDelay);
         Destroy(brokenBlockRight, brokenBlockDestroyDelay);
-
-        //Destroy mmain block
-        Destroy(gameObject);
 
     }
 }
