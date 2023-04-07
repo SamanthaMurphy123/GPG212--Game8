@@ -46,7 +46,7 @@ public class Block : MonoBehaviour
         }
     }
 
-    void Hit()
+    public void Hit()
     {
         //enable broken pieces
         brokenBlockLeft.SetActive (true);
